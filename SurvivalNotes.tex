@@ -1,0 +1,58 @@
+\documentclass[]{beamer}
+
+
+\begin{document}
+
+
+\section{}
+%------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Survival function}
+\Large
+The \textbf{survival function}, also known as a survivor function or reliability function, is a property of 
+any random variable that maps a set of events, usually associated with mortality or failure of 
+some system, onto time. 
+
+\vspace{0.3cm}
+It captures the probability that the system will survive 
+beyond a specified time.
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+\frametitle{reliability function}\Large
+\begin{itemize}
+\item The term \textbf{reliability function} is common in engineering while the term survival function 
+is used in a broader range of applications, including human mortality. 
+\item Another name for the survival function is the complementary cumulative distribution function.
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Definition}
+\Large
+Let $T$ be a continuous random variable with cumulative distribution function $F(t)$ on the interval $[0,\infty)$. 
+
+Its survival function or reliability function is:
+
+\[R(t) = P(\{T > t\})\]
+
+\[R(t) = \int_t^{\infty} f(u)\,du,.\]
+
+\[R(t) =  1-F(t).\]
+
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Properties of the Survival Function}
+\Large
+\begin{itemize}
+\item Every survival function $R(t)$ is monotonically decreasing, i.e. $R(u) \le R(t)$ for all $u > t$.
+\item The time, t = 0, represents some origin, typically the beginning of a study or the start of operation of some system. 
+\item $R(0)$ is commonly unity but can be less to represent the probability that the system fails immediately upon operation.
+\item The survivor function is right-continuous.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------%
+
+\end{document}
