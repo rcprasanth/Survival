@@ -1,0 +1,8 @@
+3.2. Nelson-Aalen estimator of the cumulative hazard function
+
+Because of its simple relationship with the survival function, S(t)=e−H(t), the cumulative hazard function can be used to estimate the survival function. The Nelson-Aalen estimator is a non-parametric estimator of the cumulative hazard function and is given by:
+
+% H^(t)=∑ti≤tdini,
+where di is the number who failed out of ni at risk in interval ti. The estimator is calculated, then, by summing the proportion of those at risk who failed in each interval up to time t.
+
+The Nelson-Aalen estimator is requested in SAS through the nelson option on the proc lifetest statement. SAS will output both Kaplan Meier estimates of the survival function and Nelson-Aalen estimates of the cumulative hazard function in one table.
