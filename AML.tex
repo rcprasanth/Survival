@@ -2,25 +2,36 @@ Acute Myelogenous Leukemia survival data
 
 Description
 
-Survival in patients with Acute Myelogenous Leukemia. The question at the time was whether the standard course of chemotherapy should be extended ('maintainance') for additional cycles.
+\textbf{Survival in patients with Acute Myelogenous Leukemia. }
+The question at the time was whether the standard course of chemotherapy should be extended ('maintainance') for additional cycles.
 
-Usage
-
-aml
-leukemia
-Format
-
-time:	survival or censoring time
-status:	censoring status
-x:	maintenance chemotherapy given? (factor)
-
+\begin{description}
+\item[time:]	survival or censoring time
+\item[status:]	censoring status
+\item[x:]	maintenance chemotherapy given? (factor)
+\end{description}
 
 %====================================================================================================================
+\begin{framed}
+\begin{verbatim}
 library(survival)
 leukemia.surv <- survfit(Surv(time, status) ~ x, data = aml) 
+
 plot(leukemia.surv, lty = 2:3) 
 legend(100, .9, c("Maintenance", "No Maintenance"), lty = 2:3) 
 title("Kaplan-Meier Curves\nfor AML Maintenance Study") 
+\end{verbatim}
+\end{framed}
+
+
+
+%====================================================================================================================
+\begin{framed}
+\begin{verbatim}
 lsurv2 <- survfit(Surv(time, status) ~ x, aml, type='fleming') 
 plot(lsurv2, lty=2:3, fun="cumhaz", 
 xlab="Months", ylab="Cumulative Hazard") 
+\end{verbatim}
+\end{framed}
+
+\end{document}
