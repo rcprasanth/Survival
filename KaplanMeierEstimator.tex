@@ -1,0 +1,25 @@
+The Kaplan–Meier estimator,also known as the product limit estimator, is an estimator for estimating the survival function from lifetime data. In medical research, it is often used to measure the fraction of patients living for a certain amount of time after treatment. In economics, it can be used to measure the length of time people remain unemployed after a job loss. In engineering, it can be used to measure the time until failure of machine parts. In ecology, it can be used to estimate how long fleshy fruits remain on plants before they are removed by frugivores. The estimator is named after Edward L. Kaplan and Paul Meier. Each submitted similar papers to the Journal of the American Statistical Association, but the editor then convinced them to combine their work into one 
+paper, which has been cited about 34,000 times since its publication.
+
+
+%==================================================================%
+
+
+
+\subsection*{Basic concepts}
+A plot of the Kaplan–Meier estimate of the survival function is a series of horizontal steps of declining magnitude which, when a large enough sample is taken, approaches the true survival function for that population. The value of the survival function between successive distinct sampled observations ("clicks") is assumed to be constant.
+An important advantage of the Kaplan–Meier curve is that the method can take into account some types of censored data, particularly right-censoring, which occurs if a patient withdraws from a study, i.e. is lost from the sample before the final outcome is observed. On the plot, small vertical tick-marks indicate losses, where a patient's survival time has been right-censored. When no truncation or censoring occurs, the Kaplan–Meier curve is the complement of the empirical distribution function.
+In medical statistics, a typical application might involve grouping patients into categories, for instance, those with Gene A profile and those with Gene B profile. In the graph, patients with Gene B die much more quickly than those with gene A. After two years, about 80% of the Gene A patients survive, but less than half of patients with Gene B.
+
+
+%==================================================================%
+
+
+\subsection*{Statistical considerations}
+The Kaplan–Meier estimator is a statistic, and several estimators are used to approximate its variance. One of the most common such estimators is Greenwood's formula:[5]
+\[ \widehat{Var}( \widehat S(t) ) = \widehat S(t)^2  \sum\limits_{t_i\le t} {\frac{{d_i}}{{n_i}({n_i-d_i})}}.\]
+
+
+In some cases, one may wish to compare different Kaplan–Meier curves. This may be done by several methods including:
+The log rank test
+The Cox proportional hazards test
