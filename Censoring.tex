@@ -1,0 +1,26 @@
+\documentclass[MasterNotes.tex]{subfiles}
+\begin{document}
+
+\section*{Censoring}
+\subsection*{Types of Censoring}
+\begin{description}
+\item[Left censoring] – a data point is below a certain value but it is unknown by how much.
+\item[Interval censoring] – a data point is somewhere on an interval between two values.
+\item[Right censoring] – a data point is above a certain value but it is unknown by how much.
+\end{description}
+
+
+%------------------------------------------------------------------------ %
+\subsection*{Type I and II Censoring}
+\begin{description}
+\item[Type I] censoring occurs if an experiment has a set number of subjects or items and stops the experiment at a predetermined time, at which point any subjects remaining are right-censored.
+\item[Type II] censoring occurs if an experiment has a set number of subjects or items and stops the experiment when a predetermined number are observed to have failed; the remaining subjects are then right-censored.
+\end{description}
+%------------------------------------------------------------------------- %
+\begin{itemize}
+\item Random (or non-informative) censoring is when each subject has a censoring time that is statistically independent of their failure time. The observed value is the minimum of the censoring and failure times; subjects whose failure time is greater than their censoring time are right-censored.
+\item Interval censoring can occur when observing a value requires follow-ups or inspections. Left and right censoring are special cases of interval censoring, with the beginning of the interval at zero or the end at infinity, respectively.
+\item Estimation methods for using left-censored data vary, and not all methods of estimation may be applicable to, or the most reliable, for all data sets.
+\end{itemize}
+
+\end{document}
