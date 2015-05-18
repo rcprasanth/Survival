@@ -19,9 +19,12 @@
 
 \end{verbatim}
 \end{framed}
+\end{frame}
 %====================================================================== %	
-	%========================================================================= %
-	Table 2.2 on page 32 using data set created for Table 2.1 previously. We use the conf.type="none" argument to specify that we do not want to include any confidence intervals for the survival function.
+%========================================================================= %
+\begin{frame}	
+\frametitle{Survival Analysis}
+Table 2.2 on page 32 using data set created for Table 2.1 previously. We use the conf.type="none" argument to specify that we do not want to include any confidence intervals for the survival function.
 		\begin{framed}
 		\begin{verbatim}
 	attach(mini)
@@ -34,6 +37,14 @@
 	8      2      1       0.3   0.239
 	22      1      1       0.0      NA
 	Figure 2.1 on page 32 based on Table 2.2.
+\end{verbatim}
+\end{framed}	
+\end{frame}
+%====================================================================== %	
+%========================================================================= %
+\begin{frame}	
+\begin{framed}
+	\begin{verbatim}	
 	plot(mini.surv, xlab="Time", ylab="Survival Probability")
 	
 	Figure 2.2 and Table 2.3 on page 34 and 35 using the entire data set hmohiv.
@@ -62,9 +73,21 @@
 
 \end{verbatim}
 \end{framed}
+\end{frame}
 %====================================================================== %	
-	Table 2.4 on page 38 using data set hmohiv with life-table estimator. We will use lifetab function presented in package KMsurv. You can download the package from CRAN by typing from the R prompt install.packages("KMsurv"). In order to be able to use function lifetab, we need to create a couple of variables, mainly the number of censored at each time point and the number of events at each time point. Also notice that the time intervals have been grouped. The first step is to create grouped data. We use function gsummary from package nlme here to create grouped data. Based on the grouped data, we will create a couple of new variables for lifetab. Function lifetab requires that the length of the time variable is 1 greater than other variables, such as the variable of number of events, or the variable of number of censored.
-		\begin{framed}
+\begin{frame}
+	Table 2.4 on page 38 using data set hmohiv with life-table estimator. We will use lifetab function presented in package KMsurv. You can download the package from CRAN by typing from the R prompt install.packages("KMsurv"). In order to be able to use function lifetab, we need to create a couple of variables, mainly the number of censored at each time point and the number of events at each time point. 
+	
+\end{frame}
+%====================================================================== %	
+\begin{frame}	
+	
+	Also notice that the time intervals have been grouped. The first step is to create grouped data. We use function gsummary from package nlme here to create grouped data. Based on the grouped data, we will create a couple of new variables for lifetab. Function lifetab requires that the length of the time variable is 1 greater than other variables, such as the variable of number of events, or the variable of number of censored.
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
+	
+			\begin{framed}
 		\begin{verbatim}
 		library(KMsurv)
 	library(nlme)
@@ -76,13 +99,28 @@
 	ltab.data<-cbind(die[,1:2], total[,2])
 	detach(hmohiv)
 	attach(ltab.data)
-	
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
+
+\begin{framed}
+\begin{verbatim}	
 	lt=length(t6m)
 	t6m[lt+1]=NA
 	nevent=censor
 	nlost=total[,2] - censor
 	mytable<-lifetab(t6m, 100, nlost, nevent)
 	mytable[,1:5]
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
+	
+	\begin{framed}
+		\begin{verbatim}
 	nsubs nlost nrisk nevent       surv
 	0-1     100    10  95.0     41 1.00000000
 	1-2      49     3  47.5     21 0.56842105
@@ -95,20 +133,42 @@
 	8-9       7     0   7.0      1 0.11171242
 	9-10      6     1   5.5      3 0.09575350
 	10-NA     2     2   1.0      0 0.04352432
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
+	
+	\begin{framed}
+		\begin{verbatim}
 	Figure 2.3 and Figure 2.4 on page 38-39 based on Table 2.4 from previous example.
 	plot(t6m[1:11], mytable[,5], type="s", xlab="Survival time in every 6 month", 
 	ylab="Proportion Surviving")
 	
 	plot(t6m[1:11], mytable[,5], type="b", xlab="Survival time in every 6 month", 
 	ylab="Proportion Surviving")
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
 	
+	\begin{framed}
+		\begin{verbatim}
 	Figure 2.5 on page 46.
 	library(survival)
 	library(km.ci)
 	
 	hmohiv.surv <- survfit( Surv(time, censor) ~ 1)
 	a<-km.ci(hmohiv.surv, conf.level=0.95, tl=NA, tu=NA, method="loghall")
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
 	
+	\begin{framed}
+		\begin{verbatim}
 	par(cex=.8)
 	plot(a, lty=2, lwd=2)
 	time.conf <- survfit( Surv(time, censor)~ 1)
@@ -116,7 +176,14 @@
 	lines(time.conf, lwd=1, lty=4, conf.int=T)
 	linetype<-c(1, 2, 4)
 	legend(40, .9, c("Kaplan-Meier", "Hall-Wellner", "Pointwise"), lty=(linetype))
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
 	
+	\begin{framed}
+		\begin{verbatim}
 	Figure 2.6 on page 48 using the mini data.
 	detach()
 	attach(mini)
@@ -127,7 +194,14 @@
 	5      4       1      0.6   0.219
 	8      2       1      0.3   0.239
 	22      1       1      0.0      NA
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
 	
+	\begin{framed}
+		\begin{verbatim}	
 	
 		\begin{framed}
 		\begin{verbatim}
@@ -141,7 +215,10 @@
 
 \end{verbatim}
 \end{framed}
+
+\end{frame}
 %====================================================================== %	
+\begin{frame}[fragile]	
 	Table 2.5 on page 50, estimating quartiles using the full hmohiv data set. The confidence intervals in the book are calculated based on the standard errors. We write a function called stci for this calculation. Here is the definition of stci:
 	
 		\begin{framed}
@@ -162,6 +239,12 @@
 		upper = q$time + 1.96*std
 		print(rbind(c(quantile=qn, time=q$time, std.err=std, cie.lower=lower, cie.upper=upper)))
 	}
+\end{verbatim}
+\end{framed}
+\end{frame}
+%====================================================================== %	
+\begin{frame}[fragile]
+
 	Now we can create the table using this function.
 	rm(list=ls()) #cleaning up 
 	hmohiv<-read.table("http://www.ats.ucla.edu/stat/r/examples/asa/hmohiv.csv", sep=",", header = TRUE) 
@@ -239,7 +322,13 @@
 %====================================================================== %
 	Table 2.9 on page 64 using the data set created in previous example.
 	Table 2.10 on page 64 testing survivor curves using the minitest data set.
-	We will use survdiff for tests. Function survdiff is a family of tests parameterized by parameter rho. The following description is from R Documentation on survdiff:  "This function implements the G-rho family of Harrington and Fleming (1982, A class of rank test procedures for censored survival data. _Biometrika_ *69*, 553-566.), with weights on each death of S(t)^rho, where S is the Kaplan-Meier estimate of survival. With 'rho = 0' this is the log-rank or Mantel-Haenszel test, and with 'rho = 1' it is equivalent to the Peto & Peto modification of the Gehan-Wilcoxon test."
+	We will use survdiff for tests. Function survdiff is a family of tests parameterized by parameter rho. 
+	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
+	
+	The following description is from R Documentation on survdiff:  "This function implements the G-rho family of Harrington and Fleming (1982, A class of rank test procedures for censored survival data. _Biometrika_ *69*, 553-566.), with weights on each death of S(t)^rho, where S is the Kaplan-Meier estimate of survival. With 'rho = 0' this is the log-rank or Mantel-Haenszel test, and with 'rho = 1' it is equivalent to the Peto & Peto modification of the Gehan-Wilcoxon test."
 		\begin{framed}
 		\begin{verbatim}
 	survdiff(Surv(time, censor) ~ drug, data=minitest, rho=0)
@@ -276,8 +365,11 @@
 	
 	\end{verbatim}
 	\end{framed}
-	%====================================================================== %
-	
+		
+	\end{frame}
+	%============================================================================ %
+	\begin{frame}[fragile]
+		
 	
 	n events median 0.95LCL 0.95UCL
 	strata(agecat)=agecat=(19.9,29] 12      8     43       5     Inf
@@ -287,6 +379,11 @@
 	Figure 2.8 on page 69 using hmohiv data set with the four age groups created in the previous example.
 	plot(age.surv, lty=c(6, 1, 4, 3), xlab="Time", ylab="Survival Probability")
 	legend(40, 1.0, c("Group 1", "Group 2", "Group 3", "Group 4"), lty=c(6, 1, 4, 3))
+
+	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
 	
 	Table 2.14 on page 70, test on survivor curves.
 	survdiff(Surv(time, censor) ~ agecat, rho=0)
@@ -297,6 +394,10 @@
 	agecat=39.0+ thru 54.1 29       23     12.9   7.98170   11.1799
 	Chisq= 19.9 on 3 degrees of freedom, p= 0.000178
 	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
+	
 	survdiff(Surv(time, censor) ~ agecat, data=hmohiv, rho=1)
 	N Observed Expected (O-E)^2/E (O-E)^2/V 
 	agecat=19.9+ thru 29.0 12     3.05     8.37    3.3859     7.225
@@ -304,10 +405,19 @@
 	agecat=34.0+ thru 39.0 25    12.48    11.48    0.0872     0.172
 	agecat=39.0+ thru 54.1 29    17.06     9.64    5.7134    10.355
 	Chisq= 15.4 on 3 degrees of freedom, p= 0.00154 
+	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
+	
 	Fig. 2.9 and table 2.16 are not reproduced since we don't have the data set.
 	Table 2.17 on page 76 to calculate the Nelson-Aalen estimator of the survivorship function for hmohiv data. The easiest way to get Nelson-Aalen estimator is via cox regression using coxph function.
 	a<- survfit(coxph(Surv(time,censor)~1), type="aalen")
 	summary(a)
+	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
 	
 	time n.risk n.event survival std.err lower 95% CI upper 95% CI
 	1    100      15   0.8607  0.0333       0.7978        0.929
@@ -318,7 +428,14 @@
 	54      6       1   0.0897  0.0350       0.0417        0.193
 	57      4       1   0.0698  0.0324       0.0281        0.173
 	58      3       1   0.0500  0.0286       0.0163        0.153
-	With object a we can create Table 2.17 as follows.
+
+	
+\end{frame}
+%============================================================================ %
+\begin{frame}[fragile]
+	
+
+With object a we can create Table 2.17 as follows.
 	h.aalen<-(-log(a$surv))
 	aalen.est<-cbind(time=a$time, d=a$n.event, n=a$n.risk, 
 	h.aalen, s1=a$surv)
@@ -356,13 +473,23 @@
 	27   58  1   3 2.9951679 0.05002823 0.03891582
 	Figure 2.10 on page 77 based on the output from previous example.
 	
+	\end{frame}
+	%============================================================================ %
+	\begin{frame}[fragile]
+	\begin{framed}
+	\begin{verbatim}
 	plot(all$time, all$s1, type="s", xlab="Survival Time (Months)", 
 	ylab="Survival Probability")
 	points(all$time, all$s1, pch=1)
 	lines(all$time, all$s2, type="s")
 	points(all$time, all$s2, pch=3)
 	legend(40, .8, c("Nelson-Aalen", "Kaplan-Meier"), pch=c(1, 3))
-	
+	\end{verbatim}
+\end{framed}
+		\end{frame}
+		%============================================================================ %
+		\begin{frame}[fragile]
+		
 	Figure 2.12 on page 82 based on the data set created from previous example.
 	h2<-all$d/all$n
 	plot.new()

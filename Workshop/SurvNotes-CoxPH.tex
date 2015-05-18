@@ -1,0 +1,72 @@
+ Effect measures for time-to-event (survival) outcomes
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+\begin{itemize}
+\item Time-to-event data arise when interest is focused on the time elapsing before an event is experienced. 
+\item They are known generically as survival data in statistics, since death is often the event of interest, particularly in cancer and heart disease. 
+\item Time-to-event data consist of pairs of observations for each individual: (i) a length of time during which no event was observed, and (ii) an indicator of whether the end of that time period corresponds to an event or just the end of observation. 
+ 
+\end{itemize}
+
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+\begin{itemize}
+\item Participants who contribute some period of time that does not end in an event are said to be ‘censored’. 
+\item Their event-free time contributes information and they are included in the analysis.
+\item  Time-to-event data may be based on events other than death, such as recurrence of a disease event (for example, time to the end of a period free of epileptic fits) or discharge from hospital.
+\end{itemize}
+
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+	
+ Time-to-event data can sometimes be analysed as dichotomous data. This requires the status of all patients in a study to be known at a fixed time-point. For example, if all patients have been followed for at least 12 months, and the proportion who have incurred the event before 12 months is known for both groups, then a 2×2 table can be constructed (see Box 9.2.a) and intervention effects expressed as risk ratios, odds ratios or risk differences.
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+	
+ It is not appropriate to analyse time-to-event data using methods for continuous outcomes (e.g. using mean times-to-event) as the relevant times are only known for the subset of participants who have had the event. Censored participants must be excluded, which almost certainly will introduce bias.
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+	 
+ The most appropriate way of summarizing time-to-event data is to use methods of survival analysis and express the intervention effect as a hazard ratio. Hazard is similar in notion to risk, but is subtly different in that it measures instantaneous risk and may change continuously (for example, your hazard of death changes as you cross a busy road). A hazard ratio is interpreted in a similar way to a risk ratio, as it describes how many times more (or less) likely a participant is to suffer the event at a particular point in time if they receive the experimental rather than the control intervention. When comparing interventions in a study or meta-analysis a simplifying assumption is often made that the hazard ratio is constant across the follow-up period, even though hazards themselves may vary continuously. This is known as the proportional hazards assumption.
+ 
+ 
+ % %  https://rpubs.com/daspringate/survival
+%================================================= %
+\begin{frame}[fragile]
+\textbf{The Proportional Hazards Assumption}
+
+Covariates multiply the hazard by some constant
+e.g. a drug may halve a subjects risk of death at any time \( t \)
+The effect is the same at any time point
+Violating the PH assumption can seriously invalidate your model!
+
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+	
+Survival analysis in R
+
+Uses the survival package.
+
+The response variable is a Surv object taking in
+
+start time (after study start)
+stop time (after study start)
+whether or not an event occurred
+Otherwise, the model is specified in the same way as for a standard regression, using the coxph function
+\end{frame}
+%================================================= %
+\begin{frame}[fragile]
+	
+Toolkit
+
+Surv(): Define a survival object
+
+coxph(): Run a cox PH regression
+
+survfit(): Fit a survival curve to a model or formula
