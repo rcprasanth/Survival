@@ -1,3 +1,71 @@
+
+%================================================================================%
+
+\subsection{Cox Model}
+%- http://www.medicine.ox.ac.uk/bandolier/painres/download/whatis/cox_model.pdf
+A Cox model is a statistical technique for exploring the
+relationship between the survival of a patient and several
+explanatory variables.
+\item  Survival analysis is concerned with studying the time
+between entry to a study and a subsequent event (such as
+death).
+\item  A Cox model provides an estimate of the treatment effect
+on survival after adjustment for other explanatory variables.
+In addition, it allows us to estimate the hazard (or risk) of death
+for an individual, given their prognostic variables.
+\item  A Cox model must be fitted using an appropriate computer
+program (such as SAS, STATA or SPSS). The final model from a
+Cox regression analysis will yield an equation for the hazard
+as a function of several explanatory variables.
+\item  Interpreting the Cox model involves examining the coefficients
+for each explanatory variable. A positive regression
+coefficient for an explanatory variable means that the hazard
+is higher, and thus the prognosis worse. Conversely, a negative
+regression coefficient implies a better prognosis for patients
+with higher values of that variable.
+\end{itemize}
+The Cox model is based on a modelling approach to the analysis of survival data. The
+purpose of the model is to simultaneously explore the effects of several variables on
+survival.
+The Cox model is a well-recognised statistical technique for analysing survival
+data. When it is used to analyse the survival of patients in a clinical trial, the model allows us
+to isolate the effects of treatment from the effects of other variables. The model can also
+be used, a priori, if it is known that there are other variables besides treatment that influence patient survival and these variables cannot be easily controlled in a clinical trial. Using the model may improve the estimate of
+treatment effect by narrowing the confidence interval. Survival times now often refer to
+the development of a particular symptom or to relapse after remission of a disease, as well as to the time to death.
+
+\subsubsection{Why are survival times
+censored?}
+A significant feature of survival times is that
+the event of interest is very rarely observed in
+all subjects. For example, in a study to
+compare the survival of patients having
+different types of treatment for malignant
+melanoma of the skin, although the patients
+may be followed up for several years, there
+will be some patients who are still alive at the
+end of the study. We do not know when these
+patients will die, only that they are still alive
+at the end of the study; therefore, we do not
+know their survival time from the start of
+treatment, only that it will be longer than
+their time in the study. Such survival times
+are termed censored, to indicate that the
+period of observation was cut off before the
+event of interest occurred.
+From a set of observed survival times
+(including censored times) in a sample of
+individuals, we can estimate the proportion of
+the population of such people who would survive a given length of time under the same
+circumstances. This method is called the product limit or Kaplan–Meier method.
+The method allows a table and a graph to be produced; these are referred to as the life table
+and survival curve respectively.
+Kaplan–Meier estimate of the survivor function The data on ten patients presented in Table 1
+refer to the survival time in years following treatment for malignant melanoma of the
+skin.
+
+%============================%
+
 Proportional hazards models are a class of survival models in statistics. 
 
 
