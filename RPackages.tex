@@ -1,0 +1,43 @@
+R packages for Survival Analysis
+Survival Analysis is a type of statistical analysis involved in the death of biological organisms and mechanical systems failure. In engineering it is known as reliability theory or reliability analysis but in economics/sociology it is known as duration analysis or duration modelling. Survival analysis explores potential answers to questions such as: what percentage of a population will survive past a certain time? What is the death or failure rate of those people who survive? Is the reason for death or failure to be considered? And in what way can specific circumstances, events or characteristics of the individual effect the survival rate?
+
+The definition of “lifetime” is required in order to obtain answers to these questions. In relation to biological organisms, their death is obvious and unmistakable. On the contrary mechanical systems failure can be partial or to a degree thus leaving the fault ambiguous. However, faults such as organ failure in the biological organism can fall into the same ambiguity bracket. 
+Put simply, survival analysis involves the modelling of time to event data. An “event” in survival analysis is the death or failure of a biological organism or a mechanical system. Usually only one “event” can occur to any individual (this would be when an organism is dead or when the system is broken). However, a repeated event (only partial failure) deconstructs that assumption. The analysis of recurring events in systems reliability is essential with regard to eliminating potential future (partial/total) systems failure.
+Standard Survival Analysis
+Example of estimating Survival Distribution
+Kaplan-Meier is the survfit function from the survival package computes the Kaplan-Meier estimator for truncated and/or censored data. Various confidence intervals and confidence bands for the Kaplan-Meier estimator are implemented in the km.ci package. plot.Surv of package eha plots the Kaplan-Meier estimator. The NADA package includes a function to compute the Kaplan-Meier estimator for left-censored data. svykm in survey provides a weighted Kaplan-Meier estimator. 
+
+Example Hazard Estimation
+From epiR the epi.insthaz function computes the instantaneous hazard from the Kaplan-Meier estimator. 
+
+Testing examples
+The maxstat package performs tests using maximally selected rank statistics. 
+The interval package implements logrank and Wilcoxon type tests for interval-censored data. 
+The survcomp function compares 2 hazard ratios. 
+The Survgini package proposes to test the equality of two survival distributions based on the Gini index. 
+Regression Modelling examples
+Parametric Proportional Hazards Model: survreg (from survival) fits a parametric proportional hazards model. The eha and mixPHM packages implement a proportional hazards model with a parametric baseline hazard. The pphsm in rms translates an AFT model to a proportional hazards form. The polspline package includes the hare function that fits a hazard regression model, using splines to model the baseline hazard. Hazards can be, but not necessarily, proportional. The flexsurv package implements the model of Royston and Parmar (2002). The model uses natural cubic splines for the baseline survival function, and proportional hazards, proportional odds or probit functions for regression. 
+Accelerated Failure Time (AFT) Models: The survreg function in package survival can fit an accelerated failure time model. The NADA package proposes the front end of the survreg function for left-censored data. A robust version of the accelerated failure time model can be found in RobustAFT. 
+Relative Survival 
+The relsurv package proposes several functions to deal with relative survival data. For example, rs.surv computes a relative survival curve. rs.add fits an additive model and rsmul fits the Cox model of Andersen et al. for relative survival, while rstrans fits a Cox model in transformed time. 
+The timereg package permits to fit relative survival models like the proportional excess and additive excess models. 
+Multivariate Survival 
+Multivariate survival refers to the analysis of unit, e.g., the survival of twins or a family. To analyse such data, we can estimate the joint distribution of the survival times or use frailty models. 
+Joint modelling: Both Icens and MLEcens can estimate bivariate survival data subject to interval censoring. 
+Frailties: Frailty terms can be added in coxph and survreg functions in package survival. A mixed-effects Cox model is implemented in the coxme package. The two.stage function in the timereg package fits the Clayton-Oakes-Glidden model. The parfm package fits fully parametric frailty models via maximisation of the marginal likelihood. The frailtypack package fits proportional hazards models with a shared Gamma frailty to right-censored and/or left-truncated data using a penalised likelihood on the hazard function. The package also fits additive and nested frailty models that can be used for, e.g., meta-analysis and for hierarchically clustered data (with 2 levels of clustering), respectively. A proportional hazards model with mixed effects can be fitted using the phmm package. The lmec package fits a linear mixed-effects model for left-censored data. The Cox model using h-likelihood estimation for the frailty terms can be fitted using the frailtyHL package. The tlmec package implements a linear mixed effects model for censored data with Student-t or normal distributions. 
+ 
+
+Packages and functions to carry out Predictions and Prediction Performance 
+The pec package provides utilities to plot prediction error curves for several survival models 
+peperr implements prediction error techniques which can be computed in a parallelised way. Useful for high-dimensional data. 
+survivalROC computes time-dependent ROC curves and time-dependent AUC from censored data using Kaplan-Meier or Akritas's nearest neighbour estimation method (Cumulative sensitivity and dynamic specificity). 
+risksetROC implements time-dependent ROC curves, AUC and integrated AUC of Heagerty and Zheng (Biometrics, 2005). 
+Various time-dependent true/false positive rates and Cumulative/Dynamic AUC are implemented in the survAUC package. 
+The survcomp package provides several functions to assess and compare the performance of survival models. 
+C-statistics for risk prediction models with censored survival data can be computed via the survC1 package. 
+ 
+
+
+
+
+
