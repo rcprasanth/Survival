@@ -1,0 +1,474 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} 
+\usepackage{framed}
+\usepackage{graphicx} 
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} 
+\usepackage{subfig} 
+%-----------------------------------------------------%
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape}
+%--------------------------------------------------------------------------------------%
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%--------------------------------------------------------------------------------------%
+
+\title{Brief Article}
+\author{The Author}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+\tableofcontents
+
+\section{Survival Analysis}
+Survival Analysis is a type of statistical analysis involved in the death of biological organisms and mechanical systems failure. In engineering it is known as reliability theory or reliability analysis but in economics/sociology it is known as duration analysis or duration modelling. Survival analysis explores potential answers to questions such as: what percentage of a population will survive past a certain time? What is the death or failure rate of those people who survive? Is the reason for death or failure to be considered? And in what way can specific circumstances, events or characteristics of the individual effect the survival rate?
+
+\section{Definitions}
+The definition of \textit{lifetime} is required in order to obtain answers to these questions. In relation to biological organisms, their death is obvious and unmistakable. On the contrary mechanical systems failure can be partial or to a degree thus leaving the fault ambiguous. However, faults such as organ failure in the biological organism can fall into the same ambiguity bracket. 
+
+Put simply, survival analysis involves the modelling of time to event data. An \textit{event} in survival analysis is the death or failure of a biological organism or a mechanical system. Usually only one “event” can occur to any individual (this would be when an organism is dead or when the system is broken). However, a repeated event (only partial failure) deconstructs that assumption. The analysis of recurring events in systems reliability is essential with regard to eliminating potential future (partial/total) systems failure.
+%-------------------------------------------------------------------------------%
+\section{Survival Analysis}
+Survival Analysis is a type of statistical analysis involved in the death of biological organisms and mechanical systems failure. In engineering it is known as reliability theory or reliability analysis but in economics/sociology it is known as duration analysis or duration modelling. Survival analysis explores potential answers to questions such as: what percentage of a population will survive past a certain time? What is the death or failure rate of those people who survive? Is the reason for death or failure to be considered? And in what way can specific circumstances, events or characteristics of the individual effect the survival rate?
+
+\section{Definitions}
+The definition of \textit{lifetime} is required in order to obtain answers to these questions. In relation to biological organisms, their death is obvious and unmistakable. On the contrary mechanical systems failure can be partial or to a degree thus leaving the fault ambiguous. However, faults such as organ failure in the biological organism can fall into the same ambiguity bracket. 
+
+Put simply, survival analysis involves the modelling of time to event data. An \textit{event} in survival analysis is the death or failure of a biological organism or a mechanical system. Usually only one “event” can occur to any individual (this would be when an organism is dead or when the system is broken). However, a repeated event (only partial failure) deconstructs that assumption. The analysis of recurring events in systems reliability is essential with regard to eliminating potential future (partial/total) systems failure.
+\section{Standard Survival Analysis}
+Example of estimating Survival Distribution
+Kaplan-Meier is the survfit function from the survival package computes the Kaplan-Meier estimator for truncated and/or censored data. Various confidence intervals and confidence bands for the Kaplan-Meier estimator are implemented in the km.ci package. plot.Surv of package eha plots the Kaplan-Meier estimator. The NADA package includes a function to compute the Kaplan-Meier estimator for left-censored data. svykm in survey provides a weighted Kaplan-Meier estimator. 
+
+\section{Example Hazard Estimation}
+From epiR the epi.insthaz function computes the instantaneous hazard from the Kaplan-Meier estimator. 
+
+Testing examples
+The \textbf{maxstat} package performs tests using maximally selected rank statistics. 
+The \textbf{interval} package implements logrank and Wilcoxon type tests for interval-censored data. 
+The \textbf{survcomp} function compares 2 hazard ratios. 
+The \textbf{Survgini} package proposes to test the equality of two survival distributions based on the Gini index. 
+\section{Regression Modelling examples}
+Parametric Proportional Hazards Model: survreg (from survival) fits a parametric proportional hazards model. The eha and mixPHM packages implement a proportional hazards model with a parametric baseline hazard. The pphsm in rms translates an AFT model to a proportional hazards form. The polspline package includes the hare function that fits a hazard regression model, using splines to model the baseline hazard. Hazards can be, but not necessarily, proportional. The flexsurv package implements the model of Royston and Parmar (2002). The model uses natural cubic splines for the baseline survival function, and proportional hazards, proportional odds or probit functions for regression. 
+Accelerated Failure Time (AFT) Models: The survreg function in package survival can fit an accelerated failure time model. The NADA package proposes the front end of the survreg function for left-censored data. A robust version of the accelerated failure time model can be found in RobustAFT. 
+Relative Survival 
+The relsurv package proposes several functions to deal with relative survival data. For example, rs.surv computes a relative survival curve. rs.add fits an additive model and rsmul fits the Cox model of Andersen et al. for relative survival, while rstrans fits a Cox model in transformed time. 
+The timereg package permits to fit relative survival models like the proportional excess and additive excess models. 
+
+\section{Multivariate Survival}
+Multivariate survival refers to the analysis of unit, e.g., the survival of twins or a family. To analyse such data, we can estimate the joint distribution of the survival times or use frailty models. 
+
+Joint modelling: Both Icens and MLEcens can estimate bivariate survival data subject to interval censoring. 
+
+Frailties: Frailty terms can be added in coxph and survreg functions in package survival. A mixed-effects Cox model is implemented in the coxme package. The two.stage function in the timereg package fits the Clayton-Oakes-Glidden model. The parfm package fits fully parametric frailty models via maximisation of the marginal likelihood. The frailtypack package fits proportional hazards models with a shared Gamma frailty to right-censored and/or left-truncated data using a penalised likelihood on the hazard function. The package also fits additive and nested frailty models that can be used for, e.g., meta-analysis and for hierarchically clustered data (with 2 levels of clustering), respectively. A proportional hazards model with mixed effects can be fitted using the phmm package. The lmec package fits a linear mixed-effects model for left-censored data. The Cox model using h-likelihood estimation for the frailty terms can be fitted using the frailtyHL package. The tlmec package implements a linear mixed effects model for censored data with Student-t or normal distributions. 
+\section{Packages} 
+
+Packages and functions to carry out Predictions and Prediction Performance 
+\begin{itemize}
+\item The pec package provides utilities to plot prediction error curves for several survival models 
+\item peperr implements prediction error techniques which can be computed in a parallelised way. Useful for high-dimensional data. 
+\item survivalROC computes time-dependent ROC curves and time-dependent AUC from censored data using Kaplan-Meier or Akritas's nearest neighbour \item estimation method (Cumulative sensitivity and dynamic specificity). 
+\item risksetROC implements time-dependent ROC curves, AUC and integrated AUC of Heagerty and Zheng (Biometrics, 2005). 
+\item Various time-dependent true/false positive rates and Cumulative/Dynamic AUC are implemented in the survAUC package. 
+\item The survcomp package provides several functions to assess and compare the performance of survival models. 
+\item C-statistics for risk prediction models with censored survival data can be computed via the survC1 package. 
+\end{itemize}
+\newpage
+\section{Survival Analysis with \texttt{R}}
+
+
+Terminology used in Survival Analysis
+
+\begin{description}
+\item[Hazard Function]
+the risk of churn in a time interval after time t, 
+given that 
+the customer has survived to time t. It is usually denoted as: $h(t)$.
+
+\item[Survival Function]
+Transforming Data the probability that a customer will have a survival time greater than or equal to t.
+It is usually denoted as: S(t)
+
+\item Hazard and Survival functions are mathematically 
+linked - by modelling Hazard, you obtain Survival
+\end{description}
+%------------------------------------------------------- %
+\newpage
+\begin{itemize}
+\item Survival object: \texttt{Surv}
+%\item Kaplan - Meier estimates: \texttt{survﬁt}
+\item The log-rank test: \texttt{survdiff}
+\item The Cox proportional hazards model: \texttt{coxph}
+\item The Accelerated failure time model: \texttt{survreg}
+\end{itemize}
+
+% http://holford.fmhs.auckland.ac.nz/docs/time-to-event-diagnostics.pdf
+%------------------------------------------------------- %
+\newpage
+\begin{framed}
+\begin{verbatim}
+library("survival")
+library("ISwR") 
+data("melanom")
+
+
+
+mfit <- survfit(Surv(days, status == 1)~1, data = melanom)
+
+## will return K-M separately for males and females
+
+survfit(Surv(days, status == 1)~gender, data = example) 
+
+plot(mfit)
+\end{verbatim}
+\end{framed}
+%------------------------------------------------------- %
+%-------------------------------------------------------------------------------%
+\section{Standard Survival Analysis}
+%Example of estimating Survival Distribution
+Kaplan-Meier is the survfit function from the survival package computes the Kaplan-Meier estimator for truncated and/or censored data. Various confidence intervals and confidence bands for the Kaplan-Meier estimator are implemented in the km.ci package. plot.Surv of package eha plots the Kaplan-Meier estimator. The 
+NADA package includes a function to compute the Kaplan-Meier estimator for left-censored data. svykm in survey provides a weighted Kaplan-Meier estimator. 
+
+\section{Example Hazard Estimation}
+From epiR the epi.insthaz function computes the instantaneous hazard from the Kaplan-Meier estimator. 
+
+Testing examples
+The \textbf{maxstat} package performs tests using maximally selected rank statistics. 
+The \textbf{interval} package implements logrank and Wilcoxon type tests for interval-censored data. 
+The \textbf{survcomp} function compares 2 hazard ratios. 
+The \textbf{Survgini} package proposes to test the equality of two survival distributions based on the Gini index. 
+%----------------------------------------------------------------------------%
+\newpage
+\section{Regression Modelling examples}
+
+Parametric Proportional Hazards Model: survreg (from survival) fits a parametric proportional hazards model. The eha and mixPHM packages implement a proportional hazards model with a parametric baseline hazard. The pphsm in rms translates an AFT model to a proportional hazards form. The polspline package includes the hare function that fits a hazard regression model, using splines to model the baseline hazard. Hazards can be, but not necessarily, proportional. The flexsurv package implements the model of Royston and Parmar (2002). The model uses natural cubic splines for the baseline survival function, and proportional hazards, proportional odds or probit functions for regression. 
+
+\subsubsection{Accelerated Failure Time (AFT) Models} The survreg function in package survival can fit an accelerated failure time model. The NADA package proposes the front end of the survreg function for left-censored data. A robust version of the accelerated failure time model can be found in RobustAFT. 
+
+\subsubsection{Relative Surviva}l  
+The relsurv package proposes several functions to deal with relative survival data. For example, rs.surv computes a relative survival curve. rs.add fits an additive model and rsmul fits the Cox model of Andersen et al. for relative survival, while rstrans fits a Cox model in transformed time.
+ 
+The timereg package permits to fit relative survival models like the proportional excess and additive excess models. 
+
+
+%--------------------------------------------------------------------------------------------------------%
+\section{Packages} 
+
+Packages and functions to carry out Predictions and Prediction Performance 
+\begin{itemize}
+\item The pec package provides utilities to plot prediction error curves for several survival models 
+\item peperr implements prediction error techniques which can be computed in a parallelised way. Useful for high-dimensional data. 
+\item survivalROC computes time-dependent ROC curves and time-dependent AUC from censored data using Kaplan-Meier or Akritas's nearest neighbour \item estimation method (Cumulative sensitivity and dynamic specificity). 
+\item risksetROC implements time-dependent ROC curves, AUC and integrated AUC of Heagerty and Zheng (Biometrics, 2005). 
+\item Various time-dependent true/false positive rates and Cumulative/Dynamic AUC are implemented in the survAUC package. 
+\item The survcomp package provides several functions to assess and compare the performance of survival models. 
+\item C-statistics for risk prediction models with censored survival data can be computed via the survC1 package. 
+\end{itemize}
+
+
+\newpage 
+
+
+
+
+
+
+\section{Survival/Failure Time Analysis}
+
+
+
+
+%General Information
+%Censored Observations
+%Analytic Techniques
+%Life Table Analysis
+%Number of Cases at Risk
+%Proportion Failing
+%Proportion surviving
+%Cumulative Proportion Surviving (Survival Function)
+%Probability Density
+%Hazard rate
+%Median survival time
+%Required sample sizes
+%Distribution Fitting
+%General Introduction
+%Estimation
+%Goodness-of-fit
+%Plots
+%Kaplan-Meier Product-Limit Estimator
+%Comparing Samples
+%General Introduction
+%Available tests
+%Choosing a two-sample test
+%Multiple sample test
+%Unequal proportions of censored data
+%Regression Models
+%General Introduction
+%Cox's Proportional Hazard Model
+%Cox's Proportional Hazard Model with Time-Dependent Covariates
+%Exponential Regression
+%Normal and Log-Normal Regression
+%Stratified Analyses
+%General Information
+
+\subsection{Background}
+These techniques were primarily developed in the medical and biological sciences, but they are also widely used in the social and economic sciences, as well as in engineering (reliability and failure time analysis).
+
+Imagine that you are a researcher in a hospital who is studying the effectiveness of a new treatment for a generally terminal disease. The major variable of interest is the number of days that the respective patients survive. In principle, one could use the standard parametric and nonparametric statistics for describing the average survival, and for comparing the new treatment with traditional methods. 
+
+However, at the end of the study there will be patients who survived over the entire study period, in particular among those patients who entered the hospital (and the research project) late in the study; there will be other patients with whom we will have lost contact. Surely, one would not want to exclude all of those patients from the study by declaring them to be missing data (since most of them are "survivors" and, therefore, they reflect on the success of the new treatment method). Those observations, which contain only partial information are called censored observations (e.g., "patient A survived at least 4 months before he moved away and we lost contact;" the term censoring was first used by Hald, 1949).
+
+\newpage
+\section{Censored Observations}
+
+In general, censored observations arise whenever the dependent variable of interest represents the time to a terminal event, and the duration of the study is limited in time. Censored observations may occur in a number of different areas of research. 
+
+For example, in the social sciences we may study the "survival" of marriages, high school drop-out rates (time to drop-out), turnover in organizations, etc. In each case, by the end of the study period, some subjects will still be married, will not have dropped out, or are still working at the same company; thus, those subjects represent censored observations.
+
+In economics we may study the "survival" of new businesses or the "survival" times of products such as automobiles. In quality control research, it is common practice to study the "survival" of parts under stress (failure time analysis).
+
+
+\section{Analytic Techniques}
+
+Essentially, the methods offered in Survival Analysis address the same research questions as many of the other procedures; however, all methods in Survival Analysis will handle censored data. The life table, survival distribution, and Kaplan-Meier survival function estimation are all descriptive methods for estimating the distribution of survival times from a sample. Several techniques are available for comparing the survival in two or more groups. 
+
+Finally, Survival Analysis offers several regression models for estimating the relationship of (multiple) continuous variables to survival times.
+
+%-------------------------------------------------------------------------------------------%
+\newpage
+
+\begin{framed}
+\begin{verbatim}
+
+library(survival) 
+# load the package which includes data
+# sets from Klein and Moeschberger’s book
+library(KMsurv) 
+
+# load the data set aml 
+data(aml) 
+
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------%
+\subsection{Functions of Interest}
+\begin{itemize}
+\item Survival object: \texttt{Surv}
+\item Kaplan-Meier estimates: \texttt{survfit}
+\item The log-rank test: \texttt{survdiff}
+\item The Cox proportional hazards model: \texttt{coxph}
+\item The Accelerated failure time model: \texttt{survreg}
+\end{itemize}
+
+
+
+%------------------------------------------------------- %
+\newpage
+
+\section{Life Table Analysis}
+
+The most straightforward way to describe the survival in a sample is to compute the \textbf{Life Table}. The life table technique is one of the oldest methods for analyzing survival (failure time) data (e.g., see Berkson \& Gage, 1950; Cutler \& Ederer, 1958; Gehan, 1969). This table can be thought of as an "enhanced" frequency distribution table. 
+
+The distribution of survival times is divided into a certain number of intervals. For each interval we can then compute the number and proportion of cases or objects that entered the respective interval "alive," the number and proportion of cases that failed in the respective interval (i.e., number of terminal events, or number of cases that "died"), and the number of cases that were lost or censored in the respective interval.
+
+Based on those numbers and proportions, several additional statistics can be computed:
+
+%Number of Cases at Risk
+%Proportion Failing
+%Proportion surviving
+%Cumulative Proportion Surviving (Survival Function)
+%Probability Density
+%Hazard rate
+%Median survival time
+%Required sample sizes
+
+\begin{description}
+\item[Number of Cases at Risk.] This is the number of cases that entered the respective interval alive, minus half of the number of cases lost or censored in the respective interval.
+
+\item[Proportion Failing.] This proportion is computed as the ratio of the number of cases failing in the respective interval, divided by the number of cases at risk in the interval.
+
+\item[Proportion Surviving.] This proportion is computed as 1 minus the proportion failing.
+
+\item[Cumulative Proportion Surviving (Survival Function).] This is the cumulative proportion of cases surviving up to the respective interval. Since the probabilities of survival are assumed to be independent across the intervals, this probability is computed by multiplying out the probabilities of survival across all previous intervals. The resulting function is also called the survivorship or survival function.
+
+\item[Probability Density.] This is the estimated probability of failure in the respective interval, computed per unit of time, that is:
+
+\[Fi = (Pi-Pi+1) /hi\]
+
+In this formula, Fi is the respective probability density in the i'th interval, $P_i$ is the estimated cumulative proportion surviving at the beginning of the i'th interval (at the end of interval i-1), Pi+1 is the cumulative proportion surviving at the end of the $i$th interval, and $h_i$
+ is the width of the respective interval.
+
+\item[Hazard Rate.] The hazard rate (the term was first used by Barlow, 1963) is defined as the probability per time unit that a case that has survived to the beginning of the respective interval will fail in that interval. Specifically, it is computed as the number of failures per time units in the respective interval, divided by the average number of surviving cases at the mid-point of the interval.
+
+\item[Median Survival Time.] This is the survival time at which the cumulative survival function is equal to 0.5. Other percentiles (25th and 75th percentile) of the cumulative survival function can be computed accordingly. Note that the 50th percentile (median) for the cumulative survival function is usually not the same as the point in time up to which 50\% of the sample survived. (This would only be the case if there were no censored observations prior to this time).
+
+\item[Required Sample Sizes.] In order to arrive at reliable estimates of the three major functions (survival, probability density, and hazard) and their standard errors at each time interval the minimum recommended sample size is 30.
+
+\end{description}
+%----------------------------------------------------------------------------------------------- %
+\section{Distribution Fitting}
+
+%General Introduction
+%Estimation
+%Goodness-of-fit
+%Plots
+
+%-------------------------------------------------------------------------%
+\newpage
+\section{General Introduction. }
+In summary, the life table gives us a good indication of the distribution of failures over time. However, for predictive purposes it is often desirable to understand the shape of the underlying survival function in the population. The major distributions that have been proposed for modeling survival or failure times are the exponential (and linear exponential) distribution, the Weibull distribution of extreme events, and the Gompertz distribution.
+
+\subsection{Estimation} The parameter estimation procedure (for estimating the parameters of the theoretical survival functions) is essentially a least squares linear regression algorithm (\textit{see Gehan \& Siddiqui, 1973}). A linear regression algorithm can be used because all four theoretical distributions can be "made linear" by appropriate transformations. Such transformations sometimes produce different variances for the residuals at different times, leading to biased estimates.
+
+\subsection{Goodness-of-Fit} Given the parameters for the different distribution functions and the respective model, we can compute the likelihood of the data. One can also compute the likelihood of the data under the null model, that is, a model that allows for different hazard rates in each interval. Without going into details, these two likelihoods can be compared via an incremental Chi-square test statistic. If this Chi-square is statistically significant, then we conclude that the respective theoretical distribution fits the data significantly worse than the null model; that is, we reject the respective distribution as a model for our data.
+
+\subsection{Plots} You can produce plots of the survival function, hazard, and probability density for the observed data and the respective theoretical distributions. These plots provide a quick visual check of the goodness-of-fit of the theoretical distribution. The example plot below shows an observed survivorship function and the fitted Weibull distribution.
+
+
+Specifically, the three lines in this plot denote the theoretical distributions that resulted from three different estimation procedures (least squares and two methods of weighted least squares).
+
+%---------------------------------------------------- %
+\newpage
+\section{Kaplan-Meier Product-Limit Estimator}
+
+Rather than classifying the observed survival times into a life table, we can estimate the survival function directly from the continuous survival or failure times. Intuitively, imagine that we create a life table so that each time interval contains exactly one case. Multiplying out the survival probabilities across the "intervals" (i.e., for each single observation) we would get for the survival function:
+
+\[S(t) = jt= 1 [(n-j)/(n-j+1)]( j )\]
+
+In this equation, S(t) is the estimated survival function, n is the total number of cases, and denotes the multiplication (geometric sum) across all cases less than or equal to t; (j) is a constant that is either 1 if the j'th case is uncensored (complete), and 0 if it is censored. This estimate of the survival function is also called the product-limit estimator, and was first proposed by Kaplan and Meier (1958). An example plot of this function is shown below.
+
+
+
+The advantage of the Kaplan-Meier Product-Limit method over the life table method for analyzing survival and failure time data is that the resulting estimates do not depend on the grouping of the data (into a certain number of time intervals). Actually, the Product-Limit method and the life table method are identical if the intervals of the life table contain at most one observation.
+
+\newpage
+\section{Comparing Samples}
+
+%General Introduction
+%Available tests
+%Choosing a two-sample test
+%Multiple sample test
+%Unequal proportions of censored data
+
+\subsection{General Introduction. }One can compare the survival or failure times in two or more samples. In principle, because survival times are not normally distributed, nonparametric tests that are based on the rank ordering of survival times should be applied. A wide range of nonparametric tests can be used in order to compare survival times; however, the tests cannot "handle" censored observations.
+
+\subsection{Available Tests.} The following five different (mostly nonparametric) tests for censored data are available: Gehan's generalized Wilcoxon test, the Cox-Mantel test, the Cox's F test , the log-rank test, and Peto and Peto's generalized Wilcoxon test. 
+
+A nonparametric test for the comparison of multiple groups is also available. Most of these tests are accompanied by appropriate z- values (values of the standard normal distribution); these z-values can be used to test for the statistical significance of any differences between groups. However, note that most of these tests will only yield reliable results with fairly large samples sizes; the small sample "behavior" is less well understood.
+
+\subsection{Choosing a Two Sample Test.} There are no widely accepted guidelines concerning which test to use in a particular situation. Cox's F test tends to be more powerful than Gehan's generalized Wilcoxon test when:
+
+\begin{itemize}
+\item Sample sizes are small (i.e., n per group less than 50);
+\item If samples are from an exponential or Weibull;
+\item If there are no censored observations (\textit{see Gehan \& Thomas, 1969}).
+\end{itemize}
+
+\textit{Lee, Desu, and Gehan (1975)} compared Gehan's test to several alternatives and showed that the Cox-Mantel test and the log-rank test are more powerful (regardless of censoring) when the samples are drawn from a population that follows an exponential or Weibull distribution; under those conditions there is little difference between the Cox-Mantel test and the log-rank test. Lee (1980) discusses the power of different tests in greater detail.
+
+\subsection{Multiple Sample Test.} There is a multiple-sample test that is an extension (or generalization) of Gehan's generalized Wilcoxon test, Peto and Peto's generalized Wilcoxon test, and the log-rank test. First, a score is assigned to each survival time using Mantel's procedure \textit{(Mantel, 1967)}; next a Chi- square value is computed based on the sums (for each group) of this score. If only two groups are specified, then this test is equivalent to Gehan's generalized Wilcoxon test, and the computations will default to that test in this case.
+
+\subsection{Unequal Proportions of Censored Data.} When comparing two or more groups it is very important to examine the number of censored observations in each group. Particularly in medical research, censoring can be the result of, for example, the application of different treatments: patients who get better faster or get worse as the result of a treatment may be more likely to drop out of the study, resulting in different numbers of censored observations in each group. Such systematic censoring may greatly bias the results of comparisons.
+
+
+
+\section{Regression Models}
+
+%General Introduction
+%Cox's Proportional Hazard Model
+%Cox's Proportional Hazard Model with Time-Dependent Covariates
+%Exponential Regression
+%Normal and Log-Normal Regression
+%Stratified Analyses
+%General Introduction
+
+A common research question in medical, biological, or engineering (failure time) research is to determine whether or not certain continuous (independent) variables are correlated with the survival or failure times. There are two major reasons why this research issue cannot be addressed via straightforward multiple regression techniques (as available in Multiple Regression): First, the dependent variable of interest (survival/failure time) is most likely not normally distributed -- a serious violation of an assumption for ordinary least squares multiple regression. Survival times usually follow an exponential or Weibull distribution. Second, there is the problem of censoring, that is, some observations will be incomplete.
+
+\subsection{Cox's Proportional Hazard Model}
+
+The proportional hazard model is the most general of the regression models because it is not based on any assumptions concerning the nature or shape of the underlying survival distribution. The model assumes that the underlying hazard rate (rather than survival time) is a function of the independent variables (covariates); no assumptions are made about the nature or shape of the hazard function. Thus, in a sense, Cox's regression model may be considered to be a nonparametric method. The model may be written as:
+
+\[ h{(t), (z1, z2, \ldots, zm)} = h0(t)exp(b_1z_1 + \ldots + b_mz_m)\]
+
+where h(t,...) denotes the resultant hazard, given the values of the m covariates for the respective case (z1, z2, ..., zm) and the respective survival time (t). The term $h_0(t)$ is called the baseline hazard; it is the hazard for the respective individual when all independent variable values are equal to zero. We can linearize this model by dividing both sides of the equation by $h_0(t)$ and then taking the natural logarithm of both sides:
+
+\[log[h{(t), (z...)}/h_0(t)] = b_1z_1 + ... + b_mz_m\]
+
+We now have a fairly "simple" linear model that can be readily estimated.
+
+\subsection{Assumptions.} While no assumptions are made about the shape of the underlying hazard function, the model equations shown above do imply two assumptions. First, they specify a multiplicative relationship between the underlying hazard function and the log-linear function of the covariates. This assumption is also called the proportionality assumption. In practical terms, it is assumed that, given two observations with different values for the independent variables, the ratio of the hazard functions for those two observations does not depend on time. The second assumption of course, is that there is a log-linear relationship between the independent variables and the underlying hazard function.
+
+\subsection{Cox's Proportional Hazard Model with Time-Dependent Covariates}
+
+An assumption of the proportional hazard model is that the hazard function for an individual (i.e., observation in the analysis) depends on the values of the covariates and the value of the baseline hazard. Given two individuals with particular values for the covariates, the ratio of the estimated hazards over time will be constant -- hence the name of the method: the proportional hazard model. The validity of this assumption may often be questionable. For example, age is often included in studies of physical health. Suppose you studied survival after surgery. It is likely, that age is a more important predictor of risk immediately after surgery, than some time after the surgery (after initial recovery). In accelerated life testing one sometimes uses a stress covariate (e.g., amount of voltage) that is slowly increased over time until failure occurs (e.g., until the electrical insulation fails; \textit{see Lawless, 1982, page 393}). In this case, the impact of the covariate is clearly dependent on time. The user can specify arithmetic expressions to define covariates as functions of several variables and survival time.
+
+\subsection{Testing the Proportionality Assumption.} As indicated by the previous examples, there are many applications where it is likely that the proportionality assumption does not hold. In that case, one can explicitly define covariates as functions of time. 
+
+For example, the analysis of a data set presented by Pike (1966) consists of survival times for two groups of rats that had been exposed to a carcinogen (see also Lawless, 1982, page 393, for a similar example). Suppose that z is a grouping variable with codes 1 and 0 to denote whether or not the respective rat was exposed. One could then fit the proportional hazard model:
+
+\[h(t,z) = h0(t)exp{b1z + b2[zlog(t)-5.4]}\]
+
+Thus, in this model the conditional hazard at time t is a function of (1) the baseline hazard h0, (2) the covariate z, and (3) of z times the logarithm of time. Note that the constant 5.4 is used here for scaling purposes only: the mean of the logarithm of the survival times in this data set is equal to 5.4. In other words, the conditional hazard at each point in time is a function of the covariate and time; thus, the effect of the covariate on survival is dependent on time; hence the name time-dependent covariate. This model allows one to specifically test the proportionality assumption. If parameter b2 is statistically significant (e.g., if it is at least twice as large as its standard error), then one can conclude that, indeed, the effect of the covariate z on survival is dependent on time, and, therefore, that the proportionality assumption does not hold.
+
+\subsection{Exponential Regression}
+
+ 
+
+Basically, this model assumes that the survival time distribution is exponential, and contingent on the values of a set of independent variables (zi). The rate parameter of the exponential distribution can then be expressed as:
+
+ 
+\[S(z) = exp(a + b1z1 + b2z2 + ... + bmzm)\]
+
+S(z) denotes the survival times, a is a constant, and the bi's are the regression parameters.
+
+\subsubsection*{Goodness-of-fit.} The Chi-square goodness-of-fit value is computed as a function of the log-likelihood for the model with all parameter estimates (L1), and the log-likelihood of the model in which all covariates are forced to 0 (zero; L0). If this Chi-square value is significant, we reject the null hypothesis and assume that the independent variables are significantly related to survival times.
+
+\subsection{Standard exponential order statistic.} One way to check the exponentiality assumption of this model is to plot the residual survival times against the standard exponential order statistic theta. If the exponentiality assumption is met, then all points in this plot will be arranged roughly in a straight line.
+
+\subsection{Normal and Log-Normal Regression}
+
+In this model, it is assumed that the survival times (or log survival times) come from a normal distribution; the resulting model is basically identical to the ordinary multiple regression model, and may be stated as:
+
+\[t = a + b1z1 + b2z2 + ... + bmzm\]
+
+where t denotes the survival times. For log-normal regression, t is replaced by its natural logarithm. The normal regression model is particularly useful because many data sets can be transformed to yield approximations of the normal distribution. Thus, in a sense this is the most general fully parametric model (as opposed to Cox's proportional hazard model which is non-parametric), and estimates can be obtained for a variety of different underlying survival distributions.
+
+\subsubsection*{Goodness-of-fit.} The Chi-square value is computed as a function of the log-likelihood for the model with all independent variables (L1), and the log-likelihood of the model in which all independent variables are forced to 0 (zero, L0).
+
+\subsection{Stratified Analyses}
+
+The purpose of a stratified analysis is to test the hypothesis whether identical regression models are appropriate for different groups, that is, whether the relationships between the independent variables and survival are identical in different groups. To perform a stratified analysis, one must first fit the respective regression model separately within each group. The sum of the log-likelihoods from these analyses represents the log-likelihood of the model with different regression coefficients (and intercepts where appropriate) in different groups. The next step is to fit the requested regression model to all data in the usual manner (i.e., ignoring group membership), and compute the log-likelihood for the overall fit. The difference between the log-likelihoods can then be tested for statistical significance (via the Chi-square statistic). 
+%------------------------------------------------------------------------------------------------%
+\newpage
+\section{Multivariate Survival}
+Multivariate survival refers to the analysis of unit, e.g., the survival of twins or a family. To analyse such data, we can estimate the joint distribution of the survival times or use frailty models. 
+
+Joint modelling: Both Icens and MLEcens can estimate bivariate survival data subject to interval censoring. 
+
+Frailties: Frailty terms can be added in coxph and survreg functions in package survival. A mixed-effects Cox model is implemented in the coxme package. The \texttt{two.stage} function in the timereg package fits the Clayton-Oakes-Glidden model. The parfm package fits fully parametric frailty models via maximisation of the marginal likelihood. The frailtypack package fits proportional hazards models with a shared Gamma frailty to right-censored and/or left-truncated data using a penalised likelihood on the hazard function. 
+
+The package also fits additive and nested frailty models that can be used for, e.g., meta-analysis and for hierarchically clustered data (with 2 levels of clustering), respectively. A proportional hazards model with mixed effects can be fitted using the phmm package. The lmec package fits a linear mixed-effects model for left-censored data. The Cox model using h-likelihood estimation for the frailty terms can be fitted using the frailtyHL package. The tlmec package implements a linear mixed effects model for censored data with Student-t or normal distributions. 
+ 
+\end{document}
