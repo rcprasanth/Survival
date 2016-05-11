@@ -1,0 +1,24 @@
+\section{Cox Proportional Hazards Model}
+Proportional hazards models are a class of survival models in statistics. Survival models relate the time that passes before some event occurs to one or more covariates that may be associated with that quantity of time. In a proportional hazards model, the unique effect of a unit increase in a covariate is multiplicative with respect to the hazard rate. For example, taking a drug may halve one's hazard rate for a stroke occurring, or, changing the material from which a manufactured component is constructed may double its hazard rate for failure. 
+\newline
+
+Other types of survival models such as accelerated failure time models do not exhibit proportional hazards. The accelerated failure time model describes a situation where the biological or mechanical life history of an event is accelerated.
+
+\subsection{Components of a Survival Model}
+Survival models can be viewed as consisting of two parts: the underlying \textbf{hazard function}, often denoted $\lambda_0(t)$, describing how the risk of event per time unit changes over time at baseline levels of covariates; and the effect parameters, describing how the hazard varies in response to explanatory covariates.
+ 
+A typical medical example would include covariates such as treatment assignment, as well as patient characteristics such as age at start of study, gender, and the presence of other diseases at start of study, in order to reduce variability and/or control for confounding.
+\newline
+
+The proportional hazards condition states that covariates are multiplicatively related to the hazard. In the simplest case of stationary coefficients, for example, a treatment with a drug may, say, halve a subject's hazard at any given time t, while the baseline hazard may vary. Note however, that this does not double the life time of the subject; the precise effect of the covariates on the life time depends on the type of $\lambda_0(t)$. Of course, the covariate is not restricted to binary predictors; in the case of a continuous covariate x, it is typically assumed that the hazard responds logarithmically; each unit increase in x results in proportional scaling of the hazard. The Cox partial likelihood shown below, is obtained by using Breslow's estimate of the baseline hazard function, plugging it into the full likelihood and then observing that the result is a product of two factors. The first factor is the partial likelihood shown below, in which the baseline hazard has "canceled out". 
+
+The second factor is free of the regression coefficients and depends on the data only through the censoring pattern. The effect of covariates estimated by any proportional hazards model can thus be reported as hazard ratios.
+
+
+Sir David Cox observed that if the proportional hazards assumption holds (or, is assumed to hold) then it is possible to estimate the effect parameter(s) without any consideration of the hazard function. This approach to survival data is called application of the Cox proportional hazards model, sometimes abbreviated to Cox model or to proportional hazards model. However, Cox also noted that biological interpretation of the proportional hazards assumption can be quite tricky.
+
+
+\subsection{Relationship to Poisson models}
+
+There is a relationship between proportional hazards models and Poisson regression models which is sometimes used to fit approximate proportional hazards models in software for Poisson regression. The usual reason for doing this is that calculation is much quicker. This was more important in the days of slower computers but can still be useful for particularly large data sets or complex problems. Authors giving the mathematical details include Laird and Olivier (1981),[10] who remark
+"Note that we do not assume [the Poisson model] is true, but simply use it as a device for deriving the likelihood."
